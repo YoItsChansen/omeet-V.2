@@ -1,6 +1,5 @@
-const express = require('express')
-const httpServer = require("http").createServer(express);
-const io = require("socket.io")(3000)
+const httpServer = require('http').createServer()
+const io = require("socket.io")(3000, {cors: {origin: "*"}});
 const users = {}
 
 io.on('connection', socket => {
