@@ -2,7 +2,6 @@ const io = require("socket.io")(3000, {cors: {origin: "*"}});
 const users = {}
 
 io.on('connection', socket => {
-    console.log("It worked")
     socket.on('send-chat-message', message => {
         socket.broadcast.emit('chat-message', message.user+": "+message.Message)
     })
