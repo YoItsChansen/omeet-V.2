@@ -1,8 +1,4 @@
-const express = require('express');
-const app = express();
-const http = require('http');
-const server = http.createServer(app);
-const io = require('socket.io')(server, {cors:{origin:"*"}})
+const io = require('socket.io')(3000, {cors:{origin:"*"}})
 
 const users = {}
 
@@ -15,11 +11,6 @@ io.on('connection', socket => {
         socket.broadcast.emit('user-connected', usrName)
     })
 })
-
-server.listen(3000, () => {
-
-})
-
 function appendMessage(message){
     const messageElement = document.createElement('div')
     messageElement.innerText = message
