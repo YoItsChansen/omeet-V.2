@@ -1,4 +1,4 @@
-const socket = io.connect('http://https://omeet.netlify.app:3000')
+const socket = io('omeet.netlify.app:3000')
 const messageContainer = document.getElementById('message-container')
 const messageSpace = document.getElementById('chat-container')
 const messageForm = document.getElementById('sent-container')

@@ -1,4 +1,9 @@
-const io = require("socket.io")(3000, {cors: {origin: "*"}});
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const io = require('socket.io')(server, {cors:{origin:"*"}})
+
 const users = {}
 
 io.on('connection', socket => {
@@ -9,6 +14,10 @@ io.on('connection', socket => {
         users[socket.id] = usrName
         socket.broadcast.emit('user-connected', usrName)
     })
+})
+
+server.listen(3000, () => {
+
 })
 
 function appendMessage(message){
