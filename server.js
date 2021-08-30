@@ -1,4 +1,9 @@
-const io = require('socket.io')(3000, {cors:{origin:"*"}})
+const httpServer = require("http").createServer();
+const io = require("socket.io")(httpServer, {
+  // ...
+});
+
+httpServer.listen(3000);
 
 const users = {}
 
